@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy Birthday</title>
+  <style>
+    html {
+      font-size: 20px;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    body {
+      height: 100vh;
+      width: 100vw;
+      background: #c27070;
+      font-family: "Merriweather", serif;
+      color: white;
+      font-size: 1rem;
+      overflow: hidden;
+    }
+
+    .paper {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate3d(-50%, -50%, 0);
+      transform: translate3d(-50%, -50%, 0);
+      width: 5rem;
+      height: 10rem;
+    }
+
+    .paper .left,
+    .paper .right,
+    .paper .mid {
+      position: absolute;
+      width: 5rem;
+      height: 10rem;
+      background: #f4f1f1;
+      -webkit-transform: perspective(200rem) rotateX(60deg);
+      transform: perspective(200rem) rotateX(60deg);
+      -webkit-transition: -webkit-transform 600ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transition: -webkit-transform 600ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transition: transform 600ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transition: transform 600ms cubic-bezier(0.175, 0.885, 0.32, 1.275), -webkit-transform 600ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .paper .left {
+      left: -4.5rem;
+      -webkit-transform-origin: 100% 50%;
+      transform-origin: 100% 50%;
+    }
+
+    .paper .right {
+      left: 4.5rem;
+      -webkit-transform-origin: 0% 50%;
+      transform-origin: 0% 50%;
+    }
+
+    .paper .mid {
+      -webkit-transform-origin: 50% 50%;
+      transform-origin: 50% 50%;
+      z-index: 2;
+    }
+
+    .paper .sheet {
+      -webkit-transition: -webkit-transform 1000ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transition: -webkit-transform 1000ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transition: transform 1000ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transition: transform 1000ms cubic-bezier(0.175, 0.885, 0.32, 1.275), -webkit-transform 1000ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .paper .sheet:nth-child(1) {
+      -webkit-transform: translateY(2rem);
+      transform: translateY(2rem);
+    }
+
+    .paper .sheet:nth-child(1) .left,
+    .paper .sheet:nth-child(1) .right,
+    .paper .sheet:nth-child(1) .mid {
+      background: #ddd5d5;
+      -webkit-transition-delay: 100ms;
+      transition-delay: 100ms;
+    }
+
+    .paper .sheet:nth-child(2) {
+      -webkit-transform: translateY(1.5rem);
+      transform: translateY(1.5rem);
+    }
+
+    .paper .sheet:nth-child(2) .left,
+    .paper .sheet:nth-child(2) .right,
+    .paper .sheet:nth-child(2) .mid {
+      background: #e8e3e3;
+      -webkit-transition-delay: 50ms;
+      transition-delay: 50ms;
+    }
+
+    .paper .sheet:nth-child(3) {
+      -webkit-transform: translateY(1rem);
+      transform: translateY(1rem);
+    }
+
+    .paper.half .left {
+      -webkit-transform: perspective(100rem) rotateX(60deg) rotateY(5deg) translateZ(-1rem);
+      transform: perspective(100rem) rotateX(60deg) rotateY(5deg) translateZ(-1rem);
+    }
+
+    .paper.half .right {
+      -webkit-transform: perspective(100rem) rotateX(60deg) rotateY(-5deg) translateZ(-1rem);
+      transform: perspective(100rem) rotateX(60deg) rotateY(-5deg) translateZ(-1rem);
+    }
+
+    .paper.half .mid {
+      -webkit-transform: perspective(100rem) rotateX(60deg) rotateY(0deg) translateZ(-0.97rem);
+      transform: perspective(100rem) rotateX(60deg) rotateY(0deg) translateZ(-0.97rem);
+    }
+
+    .paper.down .left,
+    .paper.down .right,
+    .paper.down .mid {
+      -webkit-transform: perspective(100rem) rotateX(60deg) rotateY(0deg) translateZ(-1rem);
+      transform: perspective(100rem) rotateX(60deg) rotateY(0deg) translateZ(-1rem);
+    }
+
+    .paper.down .sheet:nth-child(1) {
+      -webkit-transform: translateY(2rem);
+      transform: translateY(2rem);
+    }
+
+    .paper.down .sheet:nth-child(2) {
+      -webkit-transform: translateY(1.5rem);
+      transform: translateY(1.5rem);
+    }
+
+    .paper.down .sheet:nth-child(3) {
+      -webkit-transform: translateY(1rem);
+      transform: translateY(1rem);
+    }
+
+    .paper.down:active .sheet:nth-child(1) {
+      -webkit-transform: translateY(2rem) rotateX(0deg);
+      transform: translateY(2rem) rotateX(0deg);
+    }
+
+    .paper.down:active .sheet:nth-child(2) {
+      -webkit-transform: translateY(1.75rem) rotateX(-5deg);
+      transform: translateY(1.75rem) rotateX(-5deg);
+    }
+
+    .paper.down:active .sheet:nth-child(3) {
+      -webkit-transform: translateY(1.5rem) rotateX(-10deg);
+      transform: translateY(1.5rem) rotateX(-10deg);
+    }
+
+    .paper .stamp {
+      position: absolute;
+      top: 0.5rem;
+      left: 0.5rem;
+      width: 1.5rem;
+      height: 2rem;
+      background: #d5b3e6;
+      box-shadow: inset 0 0 0 0.2rem #bd94d1;
+    }
+
+    .paper .address {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 200%;
+      text-align: center;
+      font-size: 1rem;
+      color: #b3bfe6;
+      -webkit-transform: translate3d(-50%, -50%, 0);
+      transform: translate3d(-50%, -50%, 0);
+    }
+
+    .sig {
+      position: fixed;
+      bottom: 8px;
+      right: 8px;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 100;
+      font-family: sans-serif;
+      color: rgba(255, 255, 255, 0.4);
+      letter-spacing: 2px;
+    }
+
+    .disappear {
+      opacity: 0;
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="paper">
+    <div class="sheet">
+      <div class="left"></div>
+      <div class="mid"></div>
+      <div class="right"></div>
+    </div>
+    <div class="sheet">
+      <div class="left"></div>
+      <div class="mid"></div>
+      <div class="right"></div>
+    </div>
+    <div class="sheet">
+      <div class="left">
+        <div class="stamp"></div>
+      </div>
+      <div class="mid">
+        <div class="address">Happy Birthday
+          <br /> My Dear WuLanfang
+          <br /> Love You .Fei </div>
+      </div>
+      <div class="right"></div>
+    </div>
+  </div>
+</body>
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js"></script>
+<script>
+  $('.paper').on('mouseenter', function () {
+    $('.paper').addClass('half')
+    setTimeout(function () {
+      $('.paper').addClass('down')
+    }, 200)
+  })
+  $('.paper').on('mouseleave', function () {
+    $('.paper').removeClass('down')
+    setTimeout(function () {
+      $('.paper').removeClass('half')
+    }, 200)
+  })
+</script>
+
+</html>
