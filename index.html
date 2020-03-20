@@ -172,7 +172,7 @@
       left: 50%;
       width: 200%;
       text-align: center;
-      font-size: 1rem;
+      font-size: 1.5rem;
       color: #b3bfe6;
       -webkit-transform: translate3d(-50%, -50%, 0);
       transform: translate3d(-50%, -50%, 0);
@@ -191,9 +191,15 @@
     }
 
     .disappear {
-      opacity: 0;
+      display: none;
     }
-
+    .mail{
+      width: 900px;
+      margin: 30px auto 0 auto;
+      font-family: sans-serif;
+      font-size: 0.8rem;
+      text-align: center;
+    }
   </style>
 </head>
 
@@ -221,6 +227,45 @@
       <div class="right"></div>
     </div>
   </div>
+  <div class="mail disappear">
+三月，晚饭的时候下楼，看到楼下的樱花开了，便想念你。<br>
+<br>
+亲爱的，生日快乐！我们马上就要步入想恋的第五个年头了，没想到时间过得如此之快。<br>
+<br>
+还记得四年前，你说你要买相机，我便陪你去商场挑选，相机买到了便去沙湖便拍照，<br>
+眼镜弄丢（感谢那副丢了的眼镜🤭），还记得，在我们经常去的沙湖公园，你躺在我的肩上，我便情深不已的吻上了你。<br>
+<br>
+仿佛一切都在不久前。<br>
+<br>
+有你的时光总是有很多事可以做，很多地方想要去，和你同行总有很多美好。<br>
+<br>
+武汉的东湖、丽江的古城、洛阳的龙门石窟、北京的故宫...下一次出行会是哪里呢？不论哪里，只要我与你。<br>
+<br>
+我的脑海中经常浮现出，在东京塔，我们依偎在一起，看到美丽的夜景，再现一下柯南中的场景。<br>
+我们泡着温泉，看着窗外美丽的富士山，这该是多么棒呀！<br>
+<br>
+每想到这样的场景，总是提醒自己要努力啊，要和你一起做更多这样美好的事情！<br>
+<br>
+亲爱的，有你在身边，真的很好。<br>
+<br>
+我们现在有短暂的分离，我想，这和我们已经在一起和未来将要在一起的时间相比，都算不上什么。<br>
+我们下次团聚，便是是一次美好的节日。<br>
+当然，我也会尽快忙完工作，与你相聚，因为我也甚是想你，甚是想你！<br>
+<br>
+我爱<br>
+春天的树<br>
+夏天的花<br>
+秋天的黄昏<br>
+冬天的暖阳<br>
+还有<br>
+每一天的你<br>
+晚安<br>
+爱你<br>
+♥<br>
+<br>
+斐<br>
+2020.03.23<br>
+</div>
 </body>
 <script src="./jquery-1.8.0.js"></script>
 <script>
@@ -236,6 +281,9 @@
       $('.paper').removeClass('half')
     }, 200)
   })
+  $('.paper').on('click', function () {
+    $('.paper').addClass('disappear')
+    $('.mail').removeClass('disappear')
+  })
 </script>
-
 </html>
